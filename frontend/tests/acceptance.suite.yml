@@ -1,0 +1,11 @@
+suite_namespace: frontend\tests\acceptance
+actor: AcceptanceTester
+modules:
+    enabled:
+        # - WebDriver:
+        #     url: http://localhost:8080
+        #     browser: firefox
+        - PhpBrowser:
+            url: http://localhost/yii2.2/frontend/web/
+        - Yii2:
+            part: init

@@ -17,7 +17,7 @@ return [
             'useFileTransport' => true,
         ],
         'request' => [
-            'cookieValidationKey' => '3ZG4uPELZVYa-FLs1ibjQ1Rcr8EnGlWX',
+            'cookieValidationKey' => '',
         ],
     ],
 ];
