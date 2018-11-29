@@ -16,8 +16,8 @@ return [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
-        'request' => [
-            'cookieValidationKey' => '',
-        ],
+        // 'request' => [
+        //     'cookieValidationKey' => '',
+        // ],
     ],
 ];

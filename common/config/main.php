@@ -9,13 +9,16 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-common', 'httpOnly' => true],
-        ],
-        'session' => [
-            'name' => 'advanced-common',
+        // 'user' => [
+        //     'identityClass' => 'common\models\User',
+        //     'enableAutoLogin' => true,
+        //     'identityCookie' => ['name' => '_identity-common', 'httpOnly' => true],
+        // ],
+        // 'session' => [
+        //     'name' => 'advanced-common',
+        // ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
     ],
 ];
