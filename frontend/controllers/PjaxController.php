@@ -11,6 +11,6 @@ class PjaxController extends Controller
 	public function actionTime()
 	{
 		$time = date("H:i:s");
-		return $this->render('time', ['time' => $time])
+		return $this->render('time', ['time' => $time]);
 	}
 }

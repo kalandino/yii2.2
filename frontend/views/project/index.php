@@ -2,25 +2,21 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\tables\TaskSearch */
+/* @var $searchModel frontend\models\tables\ProjectSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-Pjax::begin();
-
-$this->title = 'Tasks';
+$this->title = 'Projects';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="task-index">
+<div class="project-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Обновить', ['index'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Project', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -43,5 +39,3 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
-
-<?php Pjax::end();
