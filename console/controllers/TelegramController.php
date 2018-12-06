@@ -58,7 +58,7 @@ class TelegramController extends Controller
 	{
 		$params = explode(' ', $message->getText());
 		$command = $params[0];
-		$response = 'Ошибочка';
+		$response = '';
 
 		switch ($command) {
 			case '/help':
@@ -74,10 +74,10 @@ class TelegramController extends Controller
 				break;
 			
 			default:
+				$response .= "Команда не верна";
 				break;
 		}
 
 		$this->bot->sendMessage($message->getFrom()->getId(), $response);
-		// var_dump($message->getText());
 	}
 }
