@@ -1,16 +1,16 @@
 <?php
 
-namespace common\models\tables;
+namespace frontend\models\tables;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\tables\Tasks;
+use frontend\models\tables\Task;
 
 /**
- * TaskSearch represents the model behind the search form of `common\models\tables\Tasks`.
+ * TaskSearch represents the model behind the search form of `frontend\models\tables\Task`.
  */
-class TaskSearch extends Tasks
+class TaskSearch extends Task
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class TaskSearch extends Tasks
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
+            [['id', 'responsible_id', 'initiator_id', 'project_id', 'created_at', 'updated_at'], 'integer'],
             [['name', 'date', 'description'], 'safe'],
         ];
     }
@@ -41,7 +41,7 @@ class TaskSearch extends Tasks
      */
     public function search($params)
     {
-        $query = Tasks::find();
+        $query = Task::find();
 
         // add conditions that should always apply here
 
@@ -61,7 +61,11 @@ class TaskSearch extends Tasks
         $query->andFilterWhere([
             'id' => $this->id,
             'date' => $this->date,
-            'user_id' => $this->user_id,
+            'responsible_id' => $this->responsible_id,
+            'initiator_id' => $this->initiator_id,
+            'project_id' => $this->project_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
@@ -70,3 +74,4 @@ class TaskSearch extends Tasks
         return $dataProvider;
     }
 }
+

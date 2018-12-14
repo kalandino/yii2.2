@@ -1,16 +1,17 @@
 <?php
 
-namespace frontend\controllers;
+namespace frontend\modules\v1\controllers;
 
-use common\models\tables\Message;
+use common\models\tables\Task;
 use common\models\User;
+use common\models\filters\ApitaskFilter;
 use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 use yii\data\ActiveDataProvider;
 
-class MessageController extends ActiveController
+class ApitaskController extends ActiveController
 {
-	public $modelClass = Message::class;
+	public $modelClass = Task::class;
 
 	public function behaviors()
 	{
@@ -37,10 +38,10 @@ class MessageController extends ActiveController
 
   public function actionIndex()
   {
-  	$query = Message::find();
-  	$query->where(['user_id' => 2]);
+  	$filter = \Yii::$app->request->get('filter');
+  	$query = Task::find();
     return new ActiveDataProvider([
-    	'query' => $query
+    	'query' => (new ApitaskFilter)->filter($filter, $query)
     ]);
   }
 }

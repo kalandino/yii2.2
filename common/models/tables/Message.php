@@ -3,7 +3,8 @@
 namespace common\models\tables;
 
 use Yii;
-use frontend\models\tables\User;
+// use frontend\models\tables\User;
+use common\models\User;
 
 /**
  * This is the model class for table "message".
@@ -65,4 +66,9 @@ class Message extends \yii\db\ActiveRecord
             }
         ];
     }
+
+    // public function extraFields()
+    // {
+    //     // return ['title'];
+    // }
 }

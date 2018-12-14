@@ -11,6 +11,11 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'v1' => [
+            'class' => 'frontend\modules\v1\Module',
+        ],
+    ],
     'components' => [
         'bot' => [
             'class' => \SonkoDmitry\Yii\TelegramBot\Component::class,
@@ -48,6 +53,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 ['class' => \yii\rest\UrlRule::class, 'controller' => ['message']],
+                ['class' => \yii\rest\UrlRule::class, 'controller' => ['v1/apitask']],
                 'about' => 'site/about',
                 'contact' => 'site/contact',
                 'login' => 'site/login',
