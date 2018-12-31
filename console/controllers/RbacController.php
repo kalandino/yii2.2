@@ -13,9 +13,11 @@ class RbacController extends Controller
 
 		$admin = $auth->createRole('admin');
 		$moder = $auth->createRole('moder');
+		$manager = $auth->createRole('manager');
 
 		$auth->add($admin);
 		$auth->add($moder);
+		$auth->add($manager);
 
 		$permissionCreate = $auth->createPermission('createTask');
 		$permissionDelete = $auth->createPermission('deleteTask');
@@ -28,7 +30,10 @@ class RbacController extends Controller
 
 		$auth->addChild($moder, $permissionCreate);
 
+		$auth->addChild($manager, $permissionCreate);
+
 		$auth->assign($admin, 1);
 		$auth->assign($moder, 2);
+		$auth->assign($manager, 3);
 	}
 }

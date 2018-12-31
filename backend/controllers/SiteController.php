@@ -6,6 +6,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use frontend\models\tables\User;
+use yii\helpers\ArrayHelper;
 
 /**
  * Site controller
@@ -28,7 +30,8 @@ class SiteController extends Controller
                     [
                         'actions' => ['logout', 'index'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        // 'roles' => ['@'],
+                        'roles' => ['admin'],
                     ],
                 ],
             ],
@@ -60,7 +63,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // if( Yii::$app->user->can('deleteTask')) {
+            return $this->render('index');
+        // } else {
+        //     // throw new \Exception("В доступе отказано");
+        //     return $this->render('404', [
+        //         'message' => 'Вам сюда нельзя'
+        //     ]);
+        // }
     }
 
     /**

@@ -4,10 +4,12 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\tables\Project;
+use frontend\models\tables\User;
 use frontend\models\tables\ProjectSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * ProjectController implements the CRUD actions for Project model.
@@ -70,8 +72,11 @@ class ProjectController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $user = ArrayHelper::map(User::find()->all(), 'id', 'username');
+
         return $this->render('create', [
             'model' => $model,
+            'user' => $user,
         ]);
     }
 
@@ -90,8 +95,11 @@ class ProjectController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $user = ArrayHelper::map(User::find()->all(), 'id', 'username');
+
         return $this->render('update', [
             'model' => $model,
+            'user' => $user,
         ]);
     }
 
@@ -123,5 +131,24 @@ class ProjectController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Detail an existing Tasks model.
+     * If detail is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDetail($id)
+    {
+        $model = $this->findModel($id);
+
+        $user = ArrayHelper::map(User::find()->all(), 'id', 'username');
+
+        return $this->render('detail', [
+            'model' => $model,
+            'user' => $user,
+        ]);
     }
 }

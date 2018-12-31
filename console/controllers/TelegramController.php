@@ -3,6 +3,7 @@
 namespace console\controllers;
 
 use common\models\tables\TelegramOffset;
+use common\models\tables\TelegramSubscribe;
 use TelegramBot\Api\Types\Message;
 use TelegramBot\Api\Types\Update;
 use yii\console\Controller;
@@ -71,6 +72,11 @@ class TelegramController extends Controller
 
 			case '/sp_create':
 				$response .= "Вы подписаны на оповещение о создании проекта";
+				$model = new TelegramSubscribe([
+					'chat_id' => $message->getFrom()->getId(),
+					'channel' => TelegramSubscribe::CHANNEL_PROJECT_CREATE
+				]);
+				$model->save();
 				break;
 			
 			default:

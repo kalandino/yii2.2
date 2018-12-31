@@ -15,12 +15,15 @@ return [
         'v1' => [
             'class' => 'frontend\modules\v1\Module',
         ],
+        'task_v1' => [
+            'class' => 'frontend\modules\task_v1\Module',
+        ],
     ],
     'components' => [
-        'bot' => [
-            'class' => \SonkoDmitry\Yii\TelegramBot\Component::class,
-            'apiToken' => '777064802:AAF_PDdemtQR5cUPWOT3O4M0L_3GC5g0ZFo',
-        ],
+        // 'bot' => [
+        //     'class' => \SonkoDmitry\Yii\TelegramBot\Component::class,
+        //     'apiToken' => '777064802:AAF_PDdemtQR5cUPWOT3O4M0L_3GC5g0ZFo',
+        // ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
             'parsers' => [
@@ -54,6 +57,8 @@ return [
             'rules' => [
                 ['class' => \yii\rest\UrlRule::class, 'controller' => ['message']],
                 ['class' => \yii\rest\UrlRule::class, 'controller' => ['v1/apitask']],
+                ['class' => \yii\rest\UrlRule::class, 'controller' => ['task_v1/task']],
+                'tasks' => 'task_v1/task',
                 'about' => 'site/about',
                 'contact' => 'site/contact',
                 'login' => 'site/login',

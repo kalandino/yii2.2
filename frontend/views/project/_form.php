@@ -14,15 +14,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->textInput(['type' => 'date']) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'responsible_id')->textInput() ?>
+    <?= $form->field($model, 'responsible_id')->dropDownList($user) ?>
 
-    <?= $form->field($model, 'initiator_id')->textInput() ?>
+    <?= $form->field($model, 'initiator_id')->dropDownList($user) ?>
 
-    <?= $form->field($model, 'project_id')->textInput() ?>
+    <?= $form->field($model, 'project_id')->dropDownList($user) ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

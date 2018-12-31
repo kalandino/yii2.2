@@ -8,7 +8,6 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\tables\TaskSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-Pjax::begin();
 
 $this->title = 'Tasks';
 $this->params['breadcrumbs'][] = $this->title;
@@ -17,6 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?php Pjax::begin(); ?>
 
     <p>
         <?= Html::a('Обновить', ['index '], ['class' => 'btn btn-success']) ?>
@@ -42,6 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-</div>
 
-<?php Pjax::end();
+    <?php Pjax::end(); ?>
+</div>
