@@ -17,6 +17,7 @@ if(!isset($hideBreadcrumbs)) {
     <h1><?= Html::a(Html::encode($this->title), ['detail', 'id' => $model->id]) ?></h1>
 
     <p>
+        <?= Html::a('Detail', ['detail', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',

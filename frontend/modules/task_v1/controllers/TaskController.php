@@ -141,6 +141,25 @@ class TaskController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    /**
+     * Detail an existing Tasks model.
+     * If detail is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDetail($id)
+    {
+        $model = $this->findModel($id);
+
+        $user = ArrayHelper::map(User::find()->all(), 'id', 'username');
+
+        return $this->render('detail', [
+            'model' => $model,
+            'user' => $user,
+        ]);
+    }
+
     // One
     public function actionOne($id)
     {
