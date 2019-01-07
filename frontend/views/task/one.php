@@ -41,7 +41,5 @@
 		messageContainer.appendChild(textNode);
 		document.getElementById('chat').appendChild(messageContainer);
 	}
-
-	// webSocket.on = 
 </script>
 
